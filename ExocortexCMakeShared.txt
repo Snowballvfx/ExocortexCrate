@@ -212,8 +212,8 @@ endfunction(setup_maya)
 
 function(deploy_maya OutputName WorkgroupName )
 
-	SET( Maya_PLUGINS_DIR "C:/Program Files/Autodesk/Maya2011/bin/plug-ins" )
-	SET( Maya_BIN_DIR "C:/Program Files/Autodesk/Maya2011/bin/plug-ins" )
+	SET( Maya_PLUGINS_DIR "C:/Program Files/Autodesk/Maya2019/bin/plug-ins" )
+	SET( Maya_BIN_DIR "C:/Program Files/Autodesk/Maya2019/bin/plug-ins" )
 
 	GET_TARGET_PROPERTY( OUTPUT_LOCATION ${OutputName} LOCATION )
 	
