@@ -123,7 +123,7 @@ IF( UNIX )
 ENDIF()
 
 # Boost.
-set( BOOST_INCLUDEDIR "${LIBRARY_ROOT}/boost/include/boost-1_44" )
+set( BOOST_INCLUDEDIR "${LIBRARY_ROOT}/boost/include/boost-1_64" )
 
 if ( UNIX )
 	set ( BOOST_OSDIR "linux" )
@@ -168,7 +168,7 @@ else()
 	set(BOOST_COMPONENTS date_time program_options regex thread iostreams python filesystem system unit_test_framework )
 endif()
 
-find_package( Boost 1.44.0 COMPONENTS REQUIRED ${BOOST_COMPONENTS} )
+find_package( Boost 1.64.0 COMPONENTS REQUIRED ${BOOST_COMPONENTS} )
 
 include_directories( ${Boost_INCLUDE_DIRS} )
 link_directories( ${Boost_LIBRARY_DIRS} )
