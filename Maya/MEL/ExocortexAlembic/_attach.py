@@ -20,7 +20,7 @@ def attachTimeAndFile(node, jobInfo, isConstant=False):
 def attachXform(name, identifier, jobInfo, isConstant=False):
 	cmds.ExocortexAlembic_profileBegin(f="Python.ExocortexAlembic._attach.attachXform")
 	try:
-		conX = cmds.listConnections(name+".translate")
+		conX = cmds.listConnections(name+".translate", d=False)
 		if conX:
 			# already receiving transformation from another node!
 			conX = conX[0]
@@ -79,15 +79,15 @@ def attachCamera(name, identifier, jobInfo, isConstant=False):
 			return [camObj]
 
 		reader = cmds.createNode("ExocortexAlembicCamera")
+		cmds.setAttr(reader+".identifier", identifier, type="string")
 		cmds.connectAttr(reader+".focalLength", name+".focalLength")
 		cmds.connectAttr(reader+".focusDistance", name+".focusDistance")
 		cmds.connectAttr(reader+".lensSqueezeRatio", name+".lensSqueezeRatio")
 		cmds.connectAttr(reader+".horizontalFilmAperture", name+".horizontalFilmAperture")
 		cmds.connectAttr(reader+".verticalFilmAperture", name+".verticalFilmAperture")
-		cmds.connectAttr(reader+".horizontalFilmOffset", name+".horizontalFilmOffset")
-		cmds.connectAttr(reader+".verticalFilmOffset", name+".verticalFilmOffset")
-		cmds.connectAttr(reader+".fStop", name+".fStop")
-		cmds.connectAttr(reader+".shutterAngle", name+".shutterAngle")
+		cmds.connectAttr(reader+".nearClippingPlane", name+".nearClipPlane")
+		cmds.connectAttr(reader+".farClippingPlane", name+".farClipPlane")
+
 
 		attachTimeAndFile(reader, jobInfo, isConstant)
 	except:
